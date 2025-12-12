@@ -1,0 +1,15 @@
+[Unit]
+Description=Vaccum Pressure Data Collector
+Documentation=http://none.fnal.gov
+After=network.target
+Wants=network.target
+
+[Service]
+Type=forking
+User=magis-group
+Group=fwk
+ExecStart=/work1/fwk/magis-group/vac/start_vac.sh
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
