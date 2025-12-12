@@ -14,7 +14,7 @@
 #  $ service magsys status
 
 export H=/work1/fwk/magis-group
-export MAG=$H/vac
+export MAG=$H/VacServe
 export PYENV=/work1/fwk/magispy
 export SERV='131.225.161.198'
 export CLIENT='131.225.97.191'

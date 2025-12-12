@@ -8,7 +8,7 @@ Wants=network.target
 Type=forking
 User=magis-group
 Group=fwk
-ExecStart=/work1/fwk/magis-group/vac/start_vac.sh
+ExecStart=/work1/fwk/magis-group/VacServe/start_vac.sh
 Restart=no
 
 [Install]
