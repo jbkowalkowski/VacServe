@@ -34,6 +34,7 @@ class Handler(socketserver.BaseRequestHandler):
 
         if the_addr != self.server.ud.client:
             print(f"bad client {the_addr}")
+            sys.stdout.flush()
             return
         
         f = data.strip().split(',')

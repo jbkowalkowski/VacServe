@@ -72,7 +72,7 @@ if __name__ == "__main__":
         elif rc <0:
             print("Server ACK timed out")
             
-        time.sleep(1)
+        time.sleep(10)
 
 
 

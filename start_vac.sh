@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # uid=8624(jbk) gid=1751(g163) groups=1751(g163),8674(fwk),53301(magis-group)
+# csresearch02 private IP is 172.19.8.193
+# csresearch08 private IP is 172.19.8.199
 
 # this is meant to be run by systemd.
 # copy magsys.service to /usr/lib/systemd/system
@@ -18,6 +20,8 @@ export MAG=$H/VacServe
 export PYENV=/work1/fwk/magispy
 export SERV='131.225.161.198'
 export CLIENT='131.225.97.191'
+#export SERV='172.19.8.199'
+#export CLIENT='172.19.8.193'
 
 cd $MAG
 source $PYENV/bin/activate
@@ -26,5 +30,4 @@ nohup $PYENV/bin/python3 ./vac_server.py -s $SERV -c $CLIENT >/tmp/vac_output1.t
 disown -ar
 echo "started the thing" >> /tmp/vac_output2.txt
 # systemd-notify --ready
-
 
