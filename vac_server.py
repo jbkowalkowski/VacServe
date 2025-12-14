@@ -33,22 +33,19 @@ class Handler(socketserver.BaseRequestHandler):
         soc=self.request[1]
         the_addr=self.client_address[0]
 
-        if the_addr != self.server.ud.client:
-            print(f"bad client {the_addr}")
-            sys.stdout.flush()
-            return
-        
         f = data.strip().split(',')
+
         back = f"A, {f[1]}".encode()
         #print(f'sending back: {back}')
         soc.sendto(back, self.client_address)
 
-        if f[0] == "P":
+        if f[0] == "P": 
+            print(f"Got ping from {the_addr}")
+            sys.stdout.flush()            
             return
         
         fout = self.server.ud.fout
         print(data, file=fout, end='\n')
-        #fout.write(data)
         fout.flush()
 
 if __name__ == "__main__":

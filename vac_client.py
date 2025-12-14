@@ -29,7 +29,11 @@ class PressureSender:
     def ping(self):
         return self.send_data("P", 'ping')        
 
-    def send(self, payload):
+    def send_list(self, payload:list):
+        s = ",".join([str(x) for x in payload])
+        return self.send(s)
+
+    def send(self, payload:str):
         rc = self.send_data("D", payload)
         self.seq += 1
         return rc
@@ -65,8 +69,15 @@ if __name__ == "__main__":
         now1 = now.strftime('%Y-%m-%d')
         now2 = now.strftime('%H:%M:%S.%f')[:-3]
         pressure = random.random()
-        payload = f'{now1}, {now2}, {pressure}'
-        rc = sender.send(payload)
+
+        #payload = f'{now1}, {now2}, {pressure}'
+        #rc = sender.send(payload)
+
+        rc = sender.send_list([now1, now2, pressure])
+
+        # this is what is written in the VacToolbox code
+        # w.writerow([now.strftime('%Y-%m-%d'), now.strftime('%H:%M:%S.%f')[:-3], pressure])
+
         if rc == None:
             print("Server ACK did not contain matching data sequence number")
         elif rc <0:
