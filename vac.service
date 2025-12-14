@@ -6,7 +6,7 @@ Wants=network.target
 
 [Service]
 Type=forking
-User=magis-group
+User=jbk
 Group=fwk
 ExecStart=/work1/fwk/magis-group/VacServe/start_vac.sh
 Restart=no
